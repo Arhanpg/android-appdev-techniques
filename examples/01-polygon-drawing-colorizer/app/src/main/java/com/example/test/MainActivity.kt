@@ -86,9 +86,9 @@ class MainActivity : AppCompatActivity() {
         } else if (pointCount == 0) {
             tvStatus.text = "Tap on the screen to add vertices."
         } else if (pointCount < 3) {
-            tvStatus.text = "Added " + pointCount + " points. Add at least " + (3 - pointCount) + " more point(s) to form a polygon."
+            tvStatus.text = "Added $pointCount points. Add at least ${3 - pointCount} more point(s) to form a polygon."
         } else {
-            tvStatus.text = "Added " + pointCount + " points. Tap 'Close Polygon' or tap near starting green ring to seal shape."
+            tvStatus.text = "Added $pointCount points. Tap 'Close Polygon' or tap near starting green ring to seal shape."
         }
     }
 }
