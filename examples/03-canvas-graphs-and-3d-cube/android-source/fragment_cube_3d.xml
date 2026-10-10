@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F5F5F5">
+
+    <TextView
+        android:id="@+id/tvCubeStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#C2185B"
+        android:padding="12dp"
+        android:text="3D Homogeneous Coordinates: Drag on screen for 360° 3D rotation!"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#FFFFFF">
+
+        <com.example.test.Cube3DView
+            android:id="@+id/cube3DView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="270dp"
+        android:background="#FFFFFF"
+        android:elevation="8dp"
+        android:padding="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnSpinCW"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="4dp"
+                    android:backgroundTint="#4CAF50"
+                    android:text="Spin CW ↻"
+                    android:textSize="11sp"
+                    android:textColor="#FFFFFF" />
+
+                <Button
+                    android:id="@+id/btnSpinCCW"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="4dp"
+                    android:backgroundTint="#0288D1"
+                    android:text="Spin CCW ↺"
+                    android:textSize="11sp"
+                    android:textColor="#FFFFFF" />
+
+                <Button
+                    android:id="@+id/btnSpinStop"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:layout_marginEnd="4dp"
+                    android:backgroundTint="#757575"
+                    android:text="Pause"
+                    android:textSize="11sp"
+                    android:textColor="#FFFFFF" />
+
+                <Button
+                    android:id="@+id/btnResetCube"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:backgroundTint="#E53935"
+                    android:text="Reset"
+                    android:textSize="11sp"
+                    android:textColor="#FFFFFF" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Current 4x4 Homogeneous Transformation Matrix:"
+                android:textColor="#333333"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvMatrix4Display"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#212121"
+                android:fontFamily="monospace"
+                android:padding="8dp"
+                android:text="[ 1.0 0.0 0.0 0.0 ]
+[ 0.0 1.0 0.0 0.0 ]
+[ 0.0 0.0 1.0 0.0 ]
+[ 0.0 0.0 0.0 1.0 ]"
+                android:textColor="#FFEB3B"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/tvRotX"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Rotation X (Vertical): 25°"
+                android:textColor="#333333"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <SeekBar
+                android:id="@+id/sbRotX"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="360"
+                android:progress="25" />
+
+            <TextView
+                android:id="@+id/tvRotY"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Rotation Y (Horizontal 360°): 45°"
+                android:textColor="#333333"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <SeekBar
+                android:id="@+id/sbRotY"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="360"
+                android:progress="45" />
+
+            <TextView
+                android:id="@+id/tvRotZ"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Rotation Z (Roll): 0°"
+                android:textColor="#333333"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <SeekBar
+                android:id="@+id/sbRotZ"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="360"
+                android:progress="0" />
+
+            <TextView
+                android:id="@+id/tvPerspectiveW"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Perspective Homogeneous W Division: 1.0"
+                android:textColor="#333333"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <SeekBar
+                android:id="@+id/sbPerspectiveW"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="200"
+                android:progress="100" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
