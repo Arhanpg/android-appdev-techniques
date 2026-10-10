@@ -12,17 +12,29 @@ This is a **learning example**, not a charting or 3D-rendering library. The data
 ```text
 examples/03-canvas-graphs-and-3d-cube/
 ├── README.md
-├── android-source/
+├── MainActivity-integration.md
+├── android-source/                 # Focused feature source and integration files
 │   ├── CanvasGraphsView.kt
 │   ├── Cube3DView.kt
+│   ├── MainActivity.kt
 │   ├── Homogeneous3DMatrixTest.kt
+│   ├── activity_main.xml
 │   ├── fragment_canvas_graphs.xml
 │   ├── fragment_cube_3d.xml
 │   └── nav_menu.xml
-└── MainActivity-integration.md
+└── complete-app/                   # Integrated project source snapshot
+    ├── settings.gradle.kts
+    ├── build.gradle.kts
+    ├── app/build.gradle.kts
+    ├── app/src/main/java/com/example/test/
+    ├── app/src/main/res/layout/
+    ├── app/src/main/res/menu/
+    └── app/src/test/
 ```
 
-The two custom View classes are the core implementations. The XML files provide the controls used by the original app. The integration guide pinpoints how the existing `MainActivity` connects them to the side navigation and UI controls.
+The two custom View classes are the core implementations. The focused `android-source/` folder is easy to browse feature-by-feature. The `complete-app/` folder also includes the earlier polygon, styling, and affine code plus the updated Activity, layouts, resources, and tests so the integrated five-section app is represented together.
+
+**Project setup note:** the complete-app snapshot currently does not include the Gradle wrapper JAR/scripts. Open it through Android Studio using a configured Gradle installation, or add a wrapper before running command-line Gradle tasks. This is stated explicitly rather than implying the wrapper was uploaded.
 
 ---
 
