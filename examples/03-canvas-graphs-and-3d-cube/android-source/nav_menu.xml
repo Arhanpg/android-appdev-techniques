@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/nav_basic" android:icon="@android:drawable/ic_menu_edit" android:title="Basic Polygon Drawer" android:checked="true" />
+        <item android:id="@+id/nav_advanced_styling" android:icon="@android:drawable/ic_menu_gallery" android:title="Advanced Color &amp; Fill Styling" />
+        <item android:id="@+id/nav_affine_transform" android:icon="@android:drawable/ic_menu_compass" android:title="Affine Matrix Transformations" />
+        <item android:id="@+id/nav_canvas_graphs" android:icon="@android:drawable/ic_menu_crop" android:title="2D Canvas Graphs (Arc, Rect, Path)" />
+        <item android:id="@+id/nav_cube_3d" android:icon="@android:drawable/ic_menu_camera" android:title="3D Homogeneous Cube &amp; Matrix" />
+    </group>
+</menu>
