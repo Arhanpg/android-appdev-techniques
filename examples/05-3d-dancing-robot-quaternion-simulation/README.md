@@ -154,17 +154,17 @@ data class Vector3(var x: Float, var y: Float, var z: Float) {
 
 A `Vector3` represents a 3D position or direction:
 
-[
+$$
 \mathbf v=(x,y,z)
-]
+$$
 
 The vector operations used by this implementation are componentwise addition and subtraction.
 
 For example:
 
-[
+$$
 (2,3,4)+(10,-2,1)=(12,1,5)
-]
+$$
 
 **Where it is used:** local cuboid vertices, body-part center locations, shoulder/hip/knee pivots, offsets from joints, and transformed world-space points.
 
@@ -176,11 +176,11 @@ The current implementation uses mutable `Float` fields and returns new `Vector3`
 
 A quaternion is a four-component number, represented here as:
 
-[
+$$
 q=(w,x,y,z)
-]
+$$
 
-The scalar component is (w); the vector part is ((x,y,z)). For a **unit quaternion**, a 3D rotation can be encoded without storing a full 3×3 or 4×4 rotation matrix.
+The scalar component is $w$; the vector part is $(x,y,z)$. For a **unit quaternion**, a 3D rotation can be encoded without storing a full 3×3 or 4×4 rotation matrix.
 
 **Exact data class:**
 
@@ -211,11 +211,11 @@ This example uses quaternions as a practical 3D-rotation representation. It does
 fun identity(): Quaternion = Quaternion(1.0f, 0f, 0f, 0f)
 ~~~
 
-For a unit quaternion (q=(1,0,0,0)), rotating any vector should leave it unchanged:
+For a unit quaternion $q=(1,0,0,0)$, rotating any vector should leave it unchanged:
 
-[
+$$
 q=(1,0,0,0)\quad\Longrightarrow\quad \mathbf v'=\mathbf v
-]
+$$
 
 The first unit test, `testQuaternionIdentity()`, verifies all three output vector components against the original values within a tolerance of 0.001.
 
@@ -262,29 +262,29 @@ The method has four steps:
 
 ## 6.2 Normalize the axis
 
-For an axis (mathbf a=(a_x,a_y,a_z)), its length is:
+For an axis $\mathbf a=(a_x,a_y,a_z)$, its length is:
 
-[
+$$
 \|\mathbf a\|=\sqrt{a_x^2+a_y^2+a_z^2}
-]
+$$
 
 Then the normalized axis is:
 
-[
+$$
 \hat{\mathbf a}=\frac{\mathbf a}{\|\mathbf a\|}
-]
+$$
 
-For the diagonal axis ((1,1,0)):
+For the diagonal axis $(1,1,0)$:
 
-[
+$$
 \|\mathbf a\|=\sqrt{1^2+1^2+0^2}=\sqrt 2
-]
+$$
 
 so the normalized axis is:
 
-[
+$$
 \hat{\mathbf a}=\left(\frac1{\sqrt2},\frac1{\sqrt2},0\right)
-]
+$$
 
 Normalization is important because the axis-angle quaternion formula expects a unit direction.
 
@@ -292,12 +292,12 @@ Normalization is important because the axis-angle quaternion formula expects a u
 
 For a unit axis (hat{mathbf a}=(a_x,a_y,a_z)) and rotation angle (	heta), the quaternion is:
 
-[
+$$
 q=\left(\cos\frac\theta2,\;
 a_x\sin\frac\theta2,\;
 a_y\sin\frac\theta2,\;
 a_z\sin\frac\theta2\right)
-]
+$$
 
 Notice that the quaternion uses **half the rotation angle**. For a 90° rotation, (	heta/2=45°). The code parameter is named `angleRad`, so it expects radians, not degrees.
 
@@ -341,33 +341,33 @@ Overloading Kotlin's `times` operator makes a multiplication expression read nat
 val totalQuat = bodyQuat * jointQuat
 ~~~
 
-Mathematically, for (q_1=(w_1,x_1,y_1,z_1)) and (q_2=(w_2,x_2,y_2,z_2)):
+Mathematically, for $q_1=(w_1,x_1,y_1,z_1)$ and $q_2=(w_2,x_2,y_2,z_2)$:
 
-[
+$$
 w=w_1w_2-x_1x_2-y_1y_2-z_1z_2
-]
+$$
 
-[
+$$
 x=w_1x_2+x_1w_2+y_1z_2-z_1y_2
-]
+$$
 
-[
+$$
 y=w_1y_2-x_1z_2+y_1w_2+z_1x_2
-]
+$$
 
-[
+$$
 z=w_1z_2+x_1y_2-y_1x_2+z_1w_2
-]
+$$
 
 Quaternion multiplication is **not commutative**:
 
-[
+$$
 q_1q_2\ne q_2q_1\quad\text{in general}
-]
+$$
 
 Therefore, changing the multiplication order can change the resulting pose. Using a composite quaternion for a joint lets the implementation combine the part's rotation with the overall body rotation.
 
-In this code, `totalQuat = bodyQuat * jointQuat`. Under the standard active-rotation convention (q(0,\mathbf v)q^{-1}), this product means the right-hand rotation is applied first, followed by the left-hand rotation.
+In this code, `totalQuat = bodyQuat * jointQuat`. Under the standard active-rotation convention $q(0,\mathbf v)q^{-1}$, this product means the right-hand rotation is applied first, followed by the left-hand rotation.
 
 ---
 
@@ -397,29 +397,29 @@ fun rotateVector(v: Vector3): Vector3 {
 
 A quaternion rotation can be written as:
 
-[
+$$
 \mathbf v'=q(0,\mathbf v)q^{-1}
-]
+$$
 
 For a unit quaternion (q=(w,\mathbf u)), where (\mathbf u=(x,y,z)), the code uses the equivalent vector formula:
 
-[
+$$
 \mathbf v'=\mathbf v+2w(\mathbf u\times\mathbf v)
 +2\left(\mathbf u\times(\mathbf u\times\mathbf v)\right)
-]
+$$
 
 This is why the implementation calculates two cross products. The first is (mathbf u	imesmathbf v); the second is (mathbf u	imes(mathbf u	imesmathbf v)).
 
 ### First cross product
 
-[
+$$
 \mathbf u\times\mathbf v=
 \left(
 yv_z-zv_y,\;
 zv_x-xv_z,\;
 xv_y-yv_x
 \right)
-]
+$$
 
 The three variables `cx1`, `cy1`, and `cz1` implement these components.
 
@@ -442,9 +442,9 @@ val rotated = qY.rotateVector(v)
 
 A positive 90° rotation around the Y-axis maps:
 
-[
+$$
 (100,0,0)\rightarrow(0,0,-100)
-]
+$$
 
 The test checks X≈0, Y≈0 and Z≈−100 within a tolerance of 0.01. This validates the sign convention used by this implementation.
 
@@ -582,9 +582,9 @@ var danceSpeedScale = 1.0f
 
 The time increment is:
 
-[
+$$
 \Delta t_{phase}=0.05\times danceSpeedScale
-]
+$$
 
 per timer tick. The slider changes the phase step; it does not change the timer period itself. A scale of 2.0 advances the choreography phase twice as much per callback as a scale of 1.0.
 
@@ -610,9 +610,9 @@ val qBodyY = Quaternion.fromAxisAngle(0f, 1f, 0f, bodyAngleY)
 
 The angle is:
 
-[
+$$
 \theta_{body}(t)=\sin(t)\times45^\circ
-]
+$$
 
 so it oscillates between approximately −45° and +45° around the Y-axis. The angle is converted into radians before being passed to `fromAxisAngle()`.
 
@@ -635,9 +635,9 @@ val qLegRightX = Quaternion.fromAxisAngle(
 
 The marching phase is:
 
-[
+$$
 \theta_{march}(t)=\sin(2.5t)\times35^\circ
-]
+$$
 
 The left and right leg angles have opposite signs. This creates alternating leg motion. In `ARM_SIDE_SWING` mode, both leg angles are set to zero so that the legs remain static during that choreography.
 
@@ -654,9 +654,9 @@ val qArmRightZ = Quaternion.fromAxisAngle(0f, 0f, 1f, -armSwingZ)
 
 This produces opposite rotations around Z:
 
-[
+$$
 \theta_{arm}(t)=\cos(2.5t)\times40^\circ
-]
+$$
 
 Cosine starts at its maximum value when its input phase is zero, whereas sine starts at zero. Using cosine for arms and sine for legs shifts the phase relation between those movements.
 
@@ -675,11 +675,11 @@ The left arm rotates around the axis ((1,1,0)); the right arm uses ((1,-1,0)) wi
 
 The wave angle is:
 
-[
+$$
 \theta_{diag}(t)=\sin(3t)\times45^\circ
-]
+$$
 
-The multiplier 3.0 makes this oscillator cycle faster than the body phase (sin(t)).
+The multiplier $3.0$ makes this oscillator cycle faster than the body phase $\sin(t)$.
 
 ---
 
@@ -847,28 +847,28 @@ private fun projectAndCollectFaces(
 
 The source uses a simple perspective-like scale factor:
 
-[
+$$
 p_z=\frac{d+z}{d}
-]
+$$
 
-with (d=600). Then:
+with $d=600$. Then:
 
-[
+$$
 x_{screen}=c_x+\frac{x}{p_z}
-]
+$$
 
-[
+$$
 y_{screen}=c_y+\frac{y}{p_z}
-]
+$$
 
-where (c_x) and (c_y) are the center of the custom View.
+where $c_x$ and $c_y$ are the center of the custom View.
 
 Because the perspective factor changes with Z, equal X/Y offsets can have different projected distances from the screen center. This is an educational projection formula, **not** a complete camera projection matrix.
 
 ### Important limitations of the formula
 
 - There is no explicit camera-space transform or near/far plane clipping in this view.
-- The denominator can approach zero when (z\) approaches (-600), leading to very large projected coordinates. The code does not guard this case.
+- The denominator can approach zero when $z$ approaches $-600$, leading to very large projected coordinates. The code does not guard this case.
 - Screen Y uses addition, `cy + v.y / zPerspective`, so positive model Y moves down on Android's screen.
 - There is no actual 3D depth buffer or back-face culling.
 
@@ -1026,9 +1026,9 @@ sbDanceSpeed.setOnSeekBarChangeListener(createSeekBarChangeListener { progress -
 
 The slider's XML `max` is 250 and its initial `progress` is 100. The transformation is:
 
-[
+$$
 speedScale=\frac{\max(progress,10)}{100}
-]
+$$
 
 Thus the initial setting is 1.0×, and the effective range is approximately 0.1× through 2.5×. Division by `100f` ensures floating-point arithmetic; dividing by the integer `100` would change the result type/precision behavior.
 
@@ -1117,27 +1117,45 @@ The submitted test class contains four test cases:
 
 ### Test 1 — identity
 
-Confirms `Quaternion.identity()` leaves the vector ((10,-20,30)) unchanged, checking each component within 0.001.
+Confirms `Quaternion.identity()` leaves the vector $(10,-20,30)$ unchanged, checking each component within 0.001.
 
 ### Test 2 — 90° around Y
 
-Rotates ((100,0,0)) around Y and expects approximately ((0,0,-100)). This checks both the rotation magnitude and the source's sign convention.
+Rotates $(100,0,0)$ around Y and expects approximately $(0,0,-100)$. This checks both the rotation magnitude and the source's sign convention.
 
 ### Test 3 — 90° around X
 
-Rotates ((0,100,0)) around X and expects approximately ((0,0,100)).
+Rotates $(0,100,0)$ around X and expects approximately $(0,0,100)$.
 
 ### Test 4 — diagonal axis rotation
 
-Creates a 45° quaternion around ((1,1,0)) and confirms:
+Creates a 45° quaternion around $(1,1,0)$ and confirms:
 
-[
+$$
 x'^2+y'^2+z'^2\approx x^2+y^2+z^2
-]
+$$
 
-For the test input ((0,100,0)), squared vector length should remain approximately (10000). This validates magnitude preservation within a tolerance of 1.0; it does not assert every expected rotated component for the diagonal case.
+For the test input $(0,100,0)$, squared vector length should remain approximately $10000$. This validates magnitude preservation within a tolerance of 1.0; it does not assert every expected rotated component for the diagonal case.
 
 These tests check the math helper. They do not instrument an Android View, inspect rendered pixels, verify animation timing, or prove that the overall articulated pose is anatomically/physically accurate.
+
+
+## Test evidence from the uploaded ZIP
+
+The supplied archive includes Gradle XML reports timestamped **2026-10-11 02:07:58 UTC**. The six suites report:
+
+| Test suite | Tests | Failures | Errors |
+|---|---:|---:|---:|
+| `AffineMatrixTest` | 3 | 0 | 0 |
+| `CameraProjectionMatrixTest` | 3 | 0 | 0 |
+| `ExampleUnitTest` | 1 | 0 | 0 |
+| `Homogeneous3DMatrixTest` | 2 | 0 | 0 |
+| `PolygonLogicTest` | 2 | 0 | 0 |
+| `QuaternionMathTest` | 4 | 0 | 0 |
+| **Total** | **15** | **0** | **0** |
+
+These are results recorded inside the uploaded ZIP. I also attempted a fresh run with `./gradlew testDebugUnitTest --offline --no-daemon`; the wrapper still tried to download Gradle 9.4.1 and failed because `services.gradle.org` could not be resolved in this environment. So the table reports the archive's saved test results, not a newly successful test execution during this repository update.
+
 
 ---
 
