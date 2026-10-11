@@ -190,7 +190,7 @@ private val houseVertices = arrayOf(
 )
 ~~~
 
-Each vertex is a point ((x,y,z)). Indices 0–7 describe the base box: a rear rectangle at (z=-80), a front rectangle at (z=+80), and the corresponding corners. Indices 8 and 9 are the roof peaks at the back and front. The roof peak is centered horizontally at (x=0) and higher vertically at (y=120).
+Each vertex is a point ($$(x,y,z)$$). Indices 0–7 describe the base box: a rear rectangle at (z=-80), a front rectangle at (z=+80), and the corresponding corners. Indices 8 and 9 are the roof peaks at the back and front. The roof peak is centered horizontally at (x=0) and higher vertically at (y=120).
 
 Coordinates are not Android screen pixels yet. They are the mesh's model-space coordinates, later rotated, translated, projected and mapped onto the screen.
 
@@ -246,7 +246,7 @@ data class Vector4(
 }
 ~~~
 
-Homogeneous coordinates make translation and projection fit into matrix multiplication. A normal 3D position is represented as ((x,y,z,1)). After a perspective projection, the output (w') is generally not 1; the later division by (w') creates perspective foreshortening.
+Homogeneous coordinates make translation and projection fit into matrix multiplication. A normal 3D position is represented as ($(x,y,z,1)$). After a perspective projection, the output (w') is generally not 1; the later division by (w') creates perspective foreshortening.
 
 The code stores a 4×4 matrix in a flat array, row by row:
 
@@ -275,7 +275,7 @@ $$
 w'=m_{12}x+m_{13}y+m_{14}z+m_{15}w
 $$
 
-The method performs four dot products, each with four terms. Its time complexity is (O(1)) per point because the matrix dimension is fixed.
+The method performs four dot products, each with four terms. Its time complexity is $O(1)$ per point because the matrix dimension is fixed.
 
 ## 4.2 Camera-space transform: rotate and move the house away from the camera
 
@@ -369,10 +369,10 @@ $$
 
 Here (N) is the near plane and (F) is the far plane (the README uses capital letters in equations to distinguish the far distance from a generic variable).
 
-For an input camera-space point ((x,y,z,1)), the outputs are:
+For an input camera-space point ($(x,y,z,1)$), the outputs are:
 
 $$
-x'=f_xx,quad y'=f_y s_y y
+x'=f_xx, \\quad y'=f_y s_y y
 $$
 
 $$
@@ -393,7 +393,7 @@ $$
 f_y=\frac{1}{\tan(\text{FOV}/2)}
 $$
 
-This is why changing the field of view changes apparent size. A smaller FOV produces a larger (f_y), magnifying the center region; a wider FOV produces a smaller (f_y), showing a wider angular region with objects appearing smaller.
+This is why changing the field of view changes apparent size. A smaller FOV produces a larger $f_y$, magnifying the center region; a wider FOV produces a smaller $f_y$, showing a wider angular region with objects appearing smaller.
 
 The FOV is treated as a **vertical** field of view. It is converted from degrees to radians before taking the tangent.
 
