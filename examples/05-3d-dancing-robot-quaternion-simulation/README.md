@@ -193,7 +193,7 @@ data class Quaternion(
 )
 ~~~
 
-The default values ((1,0,0,0)) are the identity rotation.
+The default values $q=(1,0,0,0)$ are the identity rotation.
 
 ## 4.1 Why use quaternions for this robot?
 
@@ -299,7 +299,7 @@ a_y\sin\frac\theta2,\;
 a_z\sin\frac\theta2\right)
 $$
 
-Notice that the quaternion uses **half the rotation angle**. For a 90° rotation, $\theta/2=45^\circ$. The code parameter is named \`angleRad\`, so it expects radians, not degrees.
+Notice that the quaternion uses **half the rotation angle**. For a 90° rotation, $\theta/2=45^\circ$. The code parameter is named `angleRad`, so it expects radians, not degrees.
 
 A rotation magnitude in degrees is converted at the call site, for example:
 
@@ -671,7 +671,7 @@ val qDiagLeft = Quaternion.fromAxisAngle(1f, 1f, 0f, diagAngle)
 val qDiagRight = Quaternion.fromAxisAngle(1f, -1f, 0f, -diagAngle)
 ~~~
 
-The left arm rotates around the axis ((1,1,0)); the right arm uses ((1,-1,0)) with the opposite sign. These are diagonal axes in the XY plane, not simply rotations around a coordinate axis. The `fromAxisAngle()` function normalizes these axis vectors automatically.
+The left arm rotates around the axis $(1,1,0)$; the right arm uses $(1,-1,0)$ with the opposite sign. These are diagonal axes in the XY plane, not simply rotations around a coordinate axis. The `fromAxisAngle()` function normalizes these axis vectors automatically.
 
 The wave angle is:
 
@@ -697,7 +697,7 @@ The Activity maps the selected RadioButton ID to one of these enum values.
 |---|---|
 | `MARCHING` | Arms borrow the opposite leg rotation quaternion; legs continue marching |
 | `ARM_SIDE_SWING` | Arms use opposite Z-axis swings; leg rotations are forced to zero |
-| `DIAGONAL_WAVE` | Arms use the diagonal axes ((1,1,0)) and ((1,-1,0)) |
+| `DIAGONAL_WAVE` | Arms use the diagonal axes $(1,1,0)$ and $(1,-1,0)$ |
 | `FULL_DISCO` | Each arm composes its Z swing, diagonal wave and the opposite-side leg quaternion |
 
 ## 12.1 Quaternion composition for Full Disco
@@ -902,7 +902,7 @@ This is an example of the **Painter's Algorithm**:
 
 The code sorts ascending by average Z, following its comment that it draws from farther Z to nearer Z. This is a coarse approximation: one average value cannot correctly order every possible overlap. Intersecting or complex shapes can still be drawn in the wrong order. A real depth buffer tests depth per pixel.
 
-The sorting does not change any vertices; it only changes drawing order.
+The sorting does not change any vertices; it only changes drawing order. The perspective-like denominator `(600 + z) / 600` also means more-negative Z values produce a smaller denominator and larger screen offsets. That behavior does not line up cleanly with a conventional camera-space interpretation in which more-negative Z is farther away. Treat the projection and the sort order as linked approximations in this sample, not a fully calibrated camera model.
 
 ---
 
@@ -1186,7 +1186,7 @@ These constraints are documented deliberately so future extensions can build on 
 2. Change the marching amplitude from 35° to 50°. Observe how far the legs rotate.
 3. Change `2.5f` to `1.0f` in the leg phase expression and compare the motion speed.
 4. Remove the opposite sign from `qLegRightX) (in a separate experiment) and observe the difference between alternating and same-direction leg motion.
-5. Replace a diagonal axis ((1,1,0)) with ((0,0,1)) and compare its motion direction.
+5. Replace a diagonal axis $(1,1,0)$ with $(0,0,1)$ and compare its motion direction.
 6. Change the order of `qArmLeftZ * qDiagLeft * qLegRightX` and observe that the composite rotation changes.
 7. Add a small face-color adjustment, then inspect the wireframe color behavior.
 8. Pause the animation, wait, and Play again. Notice that `danceTime` resumes rather than restarting.
