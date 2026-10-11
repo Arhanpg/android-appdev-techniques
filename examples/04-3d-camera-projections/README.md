@@ -372,7 +372,7 @@ Here (N) is the near plane and (F) is the far plane (the README uses capital let
 For an input camera-space point ($(x,y,z,1)$), the outputs are:
 
 $$
-x'=f_xx, \\quad y'=f_y s_y y
+x'=f_xx, \quad y'=f_y s_y y
 $$
 
 $$
@@ -383,7 +383,7 @@ $$
 w'=-z
 $$
 
-Notice the matrix places (-1) at index 14 and (0) at index 15. Thus W depends on the point's camera-space Z coordinate. This is the key behavior that makes division by W dependent on distance.
+Notice the matrix places $-1$ at index 14 and $0$ at index 15. Thus W depends on the point's camera-space Z coordinate. This is the key behavior that makes division by W dependent on distance.
 
 ## 5.2 Field of view and focal scale
 
