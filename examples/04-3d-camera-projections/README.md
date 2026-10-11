@@ -359,12 +359,12 @@ The nonzero entries correspond to this matrix:
 
 $$
 P=
-\\begin{bmatrix}
-f_x&0&0&0\\
-0&f_y s_y&0&0\\
-0&0&\frac{F+N}{N-F}&\frac{2FN}{N-F}\\
-0&0&-1&0
-\\end{bmatrix}
+\begin{bmatrix}
+f_x & 0 & 0 & 0 \\
+0 & f_y s_y & 0 & 0 \\
+0 & 0 & \frac{F+N}{N-F} & \frac{2FN}{N-F} \\
+0 & 0 & -1 & 0
+\end{bmatrix}
 $$
 
 Here (N) is the near plane and (F) is the far plane (the README uses capital letters in equations to distinguish the far distance from a generic variable).
