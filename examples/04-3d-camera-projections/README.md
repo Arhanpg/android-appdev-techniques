@@ -16,7 +16,9 @@ examples/04-3d-camera-projections/
 │   ├── ProjectionsView.kt
 │   ├── MainActivity.kt
 │   ├── CameraProjectionMatrixTest.kt
-│   └── fragment_projections.xml
+│   ├── fragment_projections.xml
+│   ├── activity_main.xml
+│   └── nav_menu.xml
 └── complete-app/
     ├── README.md
     ├── settings.gradle.kts
