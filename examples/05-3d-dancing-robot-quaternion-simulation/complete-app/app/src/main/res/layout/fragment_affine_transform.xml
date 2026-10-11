@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F5F5F5">
+
+    <TextView
+        android:id="@+id/tvAffineStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#2E7D32"
+        android:padding="12dp"
+        android:text="Affine Matrix Transformations: Draw polygon, close it, and adjust sliders!"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#FFFFFF">
+
+        <com.example.test.AffineTransformView
+            android:id="@+id/affineTransformView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
+        android:background="#FFFFFF"
+        android:elevation="8dp"
+        android:padding="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnAffineClose"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="4dp"
+                    android:backgroundTint="#4CAF50"
+                    android:text="Close Polygon"
+                    android:textColor="#FFFFFF" />
+
+                <Button
+                    android:id="@+id/btnResetTransform"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="4dp"
+                    android:backgroundTint="#0288D1"
+                    android:text="Reset Matrix"
+                    android:textColor="#FFFFFF" />
+
+                <Button
+                    android:id="@+id/btnAffineClear"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:backgroundTint="#E53935"
+                    android:text="Clear"
+                    android:textColor="#FFFFFF" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Current 3x3 Transformation Matrix:"
+                android:textColor="#333333"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvMatrixDisplay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#212121"
+                android:fontFamily="monospace"
+                android:padding="8dp"
+                android:text="[ 1.00  0.00  0.00 ]
+[ 0.00  1.00  0.00 ]
+[ 0.00  0.00  1.00 ]"
+                android:textColor="#00E676"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tvTranslateX"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Translate X: 0 px"
+                android:textColor="#333333"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <SeekBar
+                android:id="@+id/sbTranslateX"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="600"
+                android:progress="300" />
+
+            <TextView
+                android:id="@+id/tvTranslateY"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Translate Y: 0 px"
+                android:textColor="#333333"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <SeekBar
+                android:id="@+id/sbTranslateY"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="600"
+                android:progress="300" />
+
+            <TextView
+                android:id="@+id/tvRotation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Rotate Angle: 0°"
+                android:textColor="#333333"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <SeekBar
+                android:id="@+id/sbRotation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="360"
+                android:progress="0" />
+
+            <TextView
+                android:id="@+id/tvScaleX"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Scale X: 1.0x"
+                android:textColor="#333333"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <SeekBar
+                android:id="@+id/sbScaleX"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="300"
+                android:progress="100" />
+
+            <TextView
+                android:id="@+id/tvScaleY"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Scale Y: 1.0x"
+                android:textColor="#333333"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <SeekBar
+                android:id="@+id/sbScaleY"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="300"
+                android:progress="100" />
+
+            <TextView
+                android:id="@+id/tvSkewX"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Shear X: 0.0"
+                android:textColor="#333333"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <SeekBar
+                android:id="@+id/sbSkewX"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="300"
+                android:progress="150" />
+
+            <TextView
+                android:id="@+id/tvSkewY"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Shear Y: 0.0"
+                android:textColor="#333333"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <SeekBar
+                android:id="@+id/sbSkewY"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="300"
+                android:progress="150" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
