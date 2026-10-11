@@ -259,21 +259,21 @@ The code stores a 4×4 matrix in a flat array, row by row:
 
 The output is the matrix multiplied by the vector:
 
-[
+$$
 x'=m_0x+m_1y+m_2z+m_3w
-]
+$$
 
-[
+$$
 y'=m_4x+m_5y+m_6z+m_7w
-]
+$$
 
-[
+$$
 z'=m_8x+m_9y+m_{10}z+m_{11}w
-]
+$$
 
-[
+$$
 w'=m_{12}x+m_{13}y+m_{14}z+m_{15}w
-]
+$$
 
 The method performs four dot products, each with four terms. Its time complexity is (O(1)) per point because the matrix dimension is fixed.
 
@@ -295,17 +295,17 @@ val cameraSpaceVertices = Array(houseVertices.size) { i ->
 
 The Y-axis rotation is the ordinary 3D rotation:
 
-[
+$$
 x_r=xcos	heta+zsin	heta
-]
+$$
 
-[
+$$
 y_r=y
-]
+$$
 
-[
+$$
 z_r=-xsin	heta+zcos	heta
-]
+$$
 
 Then the code subtracts `objectDistanceZ` from Z. In this sample's right-handed camera convention, the house is moved into negative Z, so points in front of the camera have (z<0). The projection matrix assumes that convention.
 
@@ -357,31 +357,31 @@ private fun buildPerspectiveMatrix(m: FloatArray, aspect: Float) {
 
 The nonzero entries correspond to this matrix:
 
-[
+$$
 P=
-egin{bmatrix}
+\\begin{bmatrix}
 f_x&0&0&0\\
 0&f_y s_y&0&0\\
 0&0&\frac{F+N}{N-F}&\frac{2FN}{N-F}\\
 0&0&-1&0
-end{bmatrix}
-]
+\\end{bmatrix}
+$$
 
 Here (N) is the near plane and (F) is the far plane (the README uses capital letters in equations to distinguish the far distance from a generic variable).
 
 For an input camera-space point ((x,y,z,1)), the outputs are:
 
-[
+$$
 x'=f_xx,quad y'=f_y s_y y
-]
+$$
 
-[
+$$
 z'=\frac{F+N}{N-F}z+\frac{2FN}{N-F}
-]
+$$
 
-[
+$$
 w'=-z
-]
+$$
 
 Notice the matrix places (-1) at index 14 and (0) at index 15. Thus W depends on the point's camera-space Z coordinate. This is the key behavior that makes division by W dependent on distance.
 
@@ -389,9 +389,9 @@ Notice the matrix places (-1) at index 14 and (0) at index 15. Thus W depends on
 
 The code computes:
 
-[
+$$
 f_y=\frac{1}{\tan(\text{FOV}/2)}
-]
+$$
 
 This is why changing the field of view changes apparent size. A smaller FOV produces a larger (f_y), magnifying the center region; a wider FOV produces a smaller (f_y), showing a wider angular region with objects appearing smaller.
 
@@ -405,18 +405,18 @@ val aspect = w / Math.max(1f, h)
 
 where (w) and (h) are the custom View's current width and height. Dividing the horizontal focal scale by the aspect ratio compensates for the shape of the viewport:
 
-[
+$$
 f_x=\frac{f_y}{\text{aspect}}s_x
-]
+$$
 
 The call to `Math.max(1f, h)` prevents a division by zero if the View is temporarily measured with zero height.
 
 The `scaleSx` and `scaleSy` properties multiply the horizontal and vertical projection gains:
 
-[
+$$
 x_{NDC}=\frac{f_xx}{-z},qquad
 y_{NDC}=\frac{f_ys_yy}{-z}
-]
+$$
 
 These settings are projection-scale controls; they do not rescale the stored mesh vertices.
 
@@ -424,13 +424,13 @@ These settings are projection-scale controls; they do not rescale the stored mes
 
 The first part of the perspective projection produces:
 
-[
+$$
 x_{NDC}=\frac{f_xx}{-z}
-]
+$$
 
-[
+$$
 y_{NDC}=\frac{f_ys_yy}{-z}
-]
+$$
 
 If the same (x,y) position is moved farther away (larger (-z)), its NDC offset gets smaller. This is perspective foreshortening.
 
@@ -540,11 +540,11 @@ val screenPoints = Array(projectedHomogeneous.size) { i ->
 
 The normalized device coordinates are:
 
-[
+$$
 x_{NDC}=\frac{x'}{w'},quad
 y_{NDC}=\frac{y'}{w'},quad
 z_{NDC}=\frac{z'}{w'}
-]
+$$
 
 NDC is a normalized coordinate space; for the depth convention in these matrices, the near and far planes map to (-1) and (+1).
 
@@ -571,15 +571,15 @@ The output data structure is a `Triple`: screen X, screen Y and the depth-outsid
 
 In perspective mode, the source uses:
 
-[
+$$
 A=\frac{F+N}{N-F},qquad B=\frac{2FN}{N-F}
-]
+$$
 
 and:
 
-[
+$$
 z'=Az+B,qquad w'=-z
-]
+$$
 
 For camera-space Z values under this source's negative-Z-forward convention:
 
@@ -588,9 +588,9 @@ For camera-space Z values under this source's negative-Z-forward convention:
 
 The orthographic Z coefficients are:
 
-[
+$$
 z'=\frac{2}{N-F}z+\frac{F+N}{N-F}
-]
+$$
 
 with (w'=1); substituting (z=-N) and (z=-F) produces the same endpoints (-1) and (+1).
 
@@ -784,9 +784,9 @@ sbFov.setOnSeekBarChangeListener(createSeekBarChangeListener { progress ->
 
 The XML gives the SeekBar a maximum of 100 and initial progress 40. The mapping is:
 
-[
+$$
 FOV=20^circ+progress
-]
+$$
 
 so the slider represents 20° through 120°; its initial value is 60°. FOV changes perspective focal coefficients. In orthographic mode the matrix builder does not read `fovDegrees`, so moving that slider doesn't change the orthographic projection matrix.
 
