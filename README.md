@@ -10,6 +10,7 @@ A practical, learning-focused repository for Android development experiments, im
 | 02 | Advanced Fill Styling & Affine Matrix Transformations | [examples/02-advanced-styling-and-affine-transformations](examples/02-advanced-styling-and-affine-transformations) | Gradients, bitmap textures, Canvas Paint, 2D affine transforms |
 | 03 | 2D Canvas Graphs & 3D Homogeneous Cube | [examples/03-canvas-graphs-and-3d-cube](examples/03-canvas-graphs-and-3d-cube) | Custom graphs, cubic Bézier curves, 4×4 transforms, depth sorting |
 | 04 | 3D Camera Projection: Perspective vs Orthographic | [examples/04-3d-camera-projections](examples/04-3d-camera-projections) | Projection matrices, FOV, aspect ratio, homogeneous division, near/far depth mapping, clipping diagnostics |
+| 05 | 3D Dancing Robot & Quaternion Animation | [examples/05-3d-robot-simulation-quaternions](examples/05-3d-robot-simulation-quaternions) | Quaternion math, articulated cuboid geometry, animation timers, perspective-style projection, painter's sorting |
 
 ## How to use the repository
 
