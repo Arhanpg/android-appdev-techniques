@@ -290,7 +290,7 @@ Normalization is important because the axis-angle quaternion formula expects a u
 
 ## 6.3 Half-angle formula
 
-For a unit axis (hat{mathbf a}=(a_x,a_y,a_z)) and rotation angle (	heta), the quaternion is:
+For a unit axis $\hat{\mathbf a}=(a_x,a_y,a_z)$ and rotation angle $\theta$, the quaternion is:
 
 $$
 q=\left(\cos\frac\theta2,\;
@@ -299,7 +299,7 @@ a_y\sin\frac\theta2,\;
 a_z\sin\frac\theta2\right)
 $$
 
-Notice that the quaternion uses **half the rotation angle**. For a 90° rotation, (	heta/2=45°). The code parameter is named `angleRad`, so it expects radians, not degrees.
+Notice that the quaternion uses **half the rotation angle**. For a 90° rotation, $\theta/2=45^\circ$. The code parameter is named \`angleRad\`, so it expects radians, not degrees.
 
 A rotation magnitude in degrees is converted at the call site, for example:
 
@@ -401,14 +401,14 @@ $$
 \mathbf v'=q(0,\mathbf v)q^{-1}
 $$
 
-For a unit quaternion (q=(w,\mathbf u)), where (\mathbf u=(x,y,z)), the code uses the equivalent vector formula:
+For a unit quaternion $q=(w,\mathbf u)$, where $\mathbf u=(x,y,z)$, the code uses the equivalent vector formula:
 
 $$
 \mathbf v'=\mathbf v+2w(\mathbf u\times\mathbf v)
 +2\left(\mathbf u\times(\mathbf u\times\mathbf v)\right)
 $$
 
-This is why the implementation calculates two cross products. The first is (mathbf u	imesmathbf v); the second is (mathbf u	imes(mathbf u	imesmathbf v)).
+This is why the implementation calculates two cross products. The first is $\mathbf u\times\mathbf v$; the second is $\mathbf u\times(\mathbf u\times\mathbf v)$.
 
 ### First cross product
 
