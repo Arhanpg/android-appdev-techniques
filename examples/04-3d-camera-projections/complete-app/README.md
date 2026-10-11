@@ -16,8 +16,10 @@ The source snapshot contains the project/app Gradle files and version catalog. T
 - `app/src/main/res/layout/activity_main.xml`: includes the projection screen as another hidden destination.
 - `app/src/main/res/menu/nav_menu.xml`: adds `nav_projections`.
 - `app/src/test/java/com/example/test/CameraProjectionMatrixTest.kt`: the three projection formula tests.
+- `app/src/test/java/com/example/test/ExampleUnitTest.kt`: the basic local unit-test scaffold.
+- The other existing test classes cover the earlier polygon, affine and homogeneous-coordinate examples.
 
-The original polygon, advanced-styling, affine-transformation, graph and 3D-cube source/resources/tests are also included. For a code-by-code explanation and notes on projection mathematics and implementation limitations, read the parent [`README.md`](../README.md).
+The earlier polygon, advanced-styling, affine-transformation, graph and 3D-cube Kotlin sources, screen layouts, themes and tests are included. Generated build output and launcher-image assets are omitted from this source snapshot. For a code-by-code explanation and notes on projection mathematics and implementation limitations, read the parent [`README.md`](../README.md).
 
 ## Source archive and tests
 
