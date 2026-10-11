@@ -97,7 +97,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="Depth clipping diagnostic: all 10 vertices within near/far range"
+                android:text="Frustum Clipping: All 10 Vertices Inside View Frustum"
                 android:textColor="#388E3C"
                 android:textSize="11sp"
                 android:textStyle="bold" />
