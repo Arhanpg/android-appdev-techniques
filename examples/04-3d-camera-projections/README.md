@@ -45,6 +45,17 @@ examples/04-3d-camera-projections/
                 └── CameraProjectionMatrixTest.kt
 ~~~
 
+## Open the exact source files
+
+- [`ProjectionsView.kt`](android-source/ProjectionsView.kt) — mesh, projection matrices, coordinate transformation and Canvas rendering.
+- [`MainActivity.kt`](android-source/MainActivity.kt) — controls, state updates, projection mode and matrix/status callbacks.
+- [`fragment_projections.xml`](android-source/fragment_projections.xml) — the projection screen, RadioGroup and SeekBars.
+- [`activity_main.xml`](android-source/activity_main.xml) — includes the projection screen inside the existing app.
+- [`nav_menu.xml`](android-source/nav_menu.xml) — adds the projection screen to the navigation drawer.
+- [`CameraProjectionMatrixTest.kt`](android-source/CameraProjectionMatrixTest.kt) — the three projection formula tests.
+- [Complete integrated app snapshot](complete-app/README.md) — earlier five sections plus projection integration.
+- [MainActivity integration guide](MainActivity-integration.md) — separate walkthrough of the Activity and control wiring.
+
 The `android-source/` folder isolates the new feature for focused study. `complete-app/` includes the earlier five sections and the new projection section together, including the modified Activity, projection layout, navigation, tests and build configuration. Generated Gradle caches, build intermediates and the generated APK are intentionally not treated as source files.
 
 ---
