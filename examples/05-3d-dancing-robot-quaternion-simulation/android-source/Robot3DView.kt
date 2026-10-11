@@ -214,7 +214,7 @@ class Robot3DView @JvmOverloads constructor(
         val rightHipPivot = Vector3(32f, 105f, 0f)
         transformAndCollectLimb(upperLegCuboid, rightHipPivot, Vector3(0f, 50f, 0f), qLegRightX, qBodyY, cx, cy, facesToRender)
         val rightKneePivot = rightHipPivot.add(qLegRightX.rotateVector(Vector3(0f, 100f, 0f)))
-        transformAndCollectLimb(lowerLegCuboid, rightKneePivot, Vector3(0f, 45f, 0f), qLegRightX, bodyQuat = qBodyY, cx, cy, facesToRender)
+        transformAndCollectLimb(lowerLegCuboid, rightKneePivot, Vector3(0f, 45f, 0f), qLegRightX, qBodyY, cx, cy, facesToRender)
 
         // --- PAINTERS ALGORITHM Z-DEPTH SORTING ---
         // Sort all cuboid faces from furthest Z (back) to nearest Z (front)
