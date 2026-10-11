@@ -718,9 +718,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateMatrix4Display(tv: TextView, m: FloatArray) {
         val format =
-            "[ %5.2f %5.2f %5.2f %5.2f ]\\n" +
-            "[ %5.2f %5.2f %5.2f %5.2f ]\\n" +
-            "[ %5.2f %5.2f %5.2f %5.2f ]\\n" +
+            "[ %5.2f %5.2f %5.2f %5.2f ]\n" +
+            "[ %5.2f %5.2f %5.2f %5.2f ]\n" +
+            "[ %5.2f %5.2f %5.2f %5.2f ]\n" +
             "[ %5.2f %5.2f %5.2f %5.2f ]"
         tv.text = String.format(
             Locale.US, format,
