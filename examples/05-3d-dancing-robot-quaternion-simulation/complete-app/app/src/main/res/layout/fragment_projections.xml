@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F5F5F5">
+
+    <TextView
+        android:id="@+id/tvProjectionStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#00838F"
+        android:padding="12dp"
+        android:text="3D-to-2D Camera Projections: Perspective (with FOV/Near/Far/W') vs Orthographic!"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#FFFFFF">
+
+        <com.example.test.ProjectionsView
+            android:id="@+id/projectionsView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="270dp"
+        android:background="#FFFFFF"
+        android:elevation="8dp"
+        android:padding="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Camera Projection Mode:"
+                android:textColor="#333333"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/rgProjectionType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rbPerspective"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:text="Perspective Mode"
+                    android:textSize="11sp" />
+
+                <RadioButton
+                    android:id="@+id/rbOrthographic"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Orthographic Mode"
+                    android:textSize="11sp" />
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Active 4x4 Projection Matrix:"
+                android:textColor="#333333"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvProjectionMatrixDisplay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#212121"
+                android:fontFamily="monospace"
+                android:padding="8dp"
+                android:text="[ 0.00 0.00 0.00 0.00 ]&#10;[ 0.00 0.00 0.00 0.00 ]&#10;[ 0.00 0.00 0.00 0.00 ]&#10;[ 0.00 0.00 0.00 0.00 ]"
+                android:textColor="#00E676"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/tvClippingStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Frustum Clipping: All 10 Vertices Inside View Frustum"
+                android:textColor="#388E3C"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvFovLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Field of View (FOV): 60°"
+                android:textColor="#333333"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <SeekBar
+                android:id="@+id/sbFov"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="100"
+                android:progress="40" />
+
+            <TextView
+                android:id="@+id/tvObjectDistanceLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Object Z Distance: 500 px"
+                android:textColor="#333333"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <SeekBar
+                android:id="@+id/sbObjectDistance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="1300"
+                android:progress="300" />
+
+            <TextView
+                android:id="@+id/tvObjectRotationLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="3D Y Rotation: 30°"
+                android:textColor="#333333"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <SeekBar
+                android:id="@+id/sbObjectRotation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="360"
+                android:progress="30" />
+
+            <TextView
+                android:id="@+id/tvScaleSxLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Scale Sx: 1.00x"
+                android:textColor="#333333"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <SeekBar
+                android:id="@+id/sbScaleSx"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="280"
+                android:progress="80" />
+
+            <TextView
+                android:id="@+id/tvScaleSyLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Scale Sy: 1.00x"
+                android:textColor="#333333"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <SeekBar
+                android:id="@+id/sbScaleSy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="280"
+                android:progress="80" />
+
+            <TextView
+                android:id="@+id/tvNearPlaneLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Near Clipping Plane (N): 100 px"
+                android:textColor="#333333"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <SeekBar
+                android:id="@+id/sbNearPlane"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="390"
+                android:progress="90" />
+
+            <TextView
+                android:id="@+id/tvFarPlaneLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Far Clipping Plane (F): 1200 px"
+                android:textColor="#333333"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <SeekBar
+                android:id="@+id/sbFarPlane"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="2500"
+                android:progress="700" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
