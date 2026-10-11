@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F5F5F5">
+
+    <!-- Header Status -->
+    <TextView
+        android:id="@+id/tvRobotStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#283593"
+        android:padding="12dp"
+        android:text="3D Dancing Robot: Quaternion rotations along X, Y, Z, and (1,1,0)/(1,-1,0) axes!"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp" />
+
+    <!-- Canvas -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#FFFFFF">
+
+        <com.example.test.Robot3DView
+            android:id="@+id/robot3DView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+
+    <!-- Controls Panel -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="#FFFFFF"
+        android:elevation="8dp"
+        android:padding="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Playback Controls -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnRobotPlay"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="4dp"
+                    android:backgroundTint="#4CAF50"
+                    android:text="Play Dance"
+                    android:textSize="11sp"
+                    android:textColor="#FFFFFF" />
+
+                <Button
+                    android:id="@+id/btnRobotPause"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="4dp"
+                    android:backgroundTint="#FF9800"
+                    android:text="Pause"
+                    android:textSize="11sp"
+                    android:textColor="#FFFFFF" />
+
+                <Button
+                    android:id="@+id/btnToggleWireframe"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.2"
+                    android:backgroundTint="#7E57C2"
+                    android:text="Wireframe Toggle"
+                    android:textSize="10sp"
+                    android:textColor="#FFFFFF" />
+            </LinearLayout>
+
+            <!-- Choreography Style Selector -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Dance Choreography Sequence:"
+                android:textColor="#333333"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/rgDanceStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/rbFullDisco"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Full Disco Dance (Y-body, X-legs, Z-arms, Diag)"
+                    android:textSize="11sp" />
+
+                <RadioButton
+                    android:id="@+id/rbMarching"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Leg Marching Sequence (X-axis Leg Lifting)"
+                    android:textSize="11sp" />
+
+                <RadioButton
+                    android:id="@+id/rbSideSwing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Arm Side Swings (Z-axis Side Swings)"
+                    android:textSize="11sp" />
+
+                <RadioButton
+                    android:id="@+id/rbDiagonal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Diagonal Arm Waves (Axes (1,1,0) and (1,-1,0))"
+                    android:textSize="11sp" />
+            </RadioGroup>
+
+            <!-- Dance Speed Slider -->
+            <TextView
+                android:id="@+id/tvDanceSpeedLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Dance Tempo / Speed: 1.0x"
+                android:textColor="#333333"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <SeekBar
+                android:id="@+id/sbDanceSpeed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="250"
+                android:progress="100" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
