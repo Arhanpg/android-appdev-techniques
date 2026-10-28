@@ -11,6 +11,7 @@ A practical, learning-focused repository for Android development experiments, im
 | 03 | 2D Canvas Graphs & 3D Homogeneous Cube | [examples/03-canvas-graphs-and-3d-cube](examples/03-canvas-graphs-and-3d-cube) | Custom graphs, cubic Bézier curves, 4×4 transforms, depth sorting |
 | 04 | 3D Camera Projection: Perspective vs Orthographic | [examples/04-3d-camera-projections](examples/04-3d-camera-projections) | Projection matrices, FOV, aspect ratio, homogeneous division, near/far depth mapping, clipping diagnostics |
 | 05 | 3D Dancing Robot & Quaternion Animation | [examples/05-3d-dancing-robot-quaternion-simulation](examples/05-3d-dancing-robot-quaternion-simulation) | Quaternion math, articulated cuboid geometry, animation timers, perspective-style projection, painter's sorting |
+| 06 | OpenGL ES 2D Shape Rendering | [examples/06-opengl-es-2d-shapes](examples/06-opengl-es-2d-shapes) | GLSL shaders, GPU buffers, vertex attributes, indexed drawing, MVP matrices, GLES render thread |
 
 ## How to use the repository
 
@@ -26,7 +27,7 @@ Every module aims to document:
 
 ## Stack
 
-Kotlin · Android Studio · Android SDK · Android Views / Canvas · AndroidX · Material Components · Linear algebra and graphics mathematics
+Kotlin · Android Studio · Android SDK · Android Views / Canvas · OpenGL ES 2.0 · GLSL · AndroidX · Material Components · Linear algebra and graphics mathematics
 
 ---
 
