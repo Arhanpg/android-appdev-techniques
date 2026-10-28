@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F5F5F5">
+
+    <TextView
+        android:id="@+id/tvGLStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#D81B60"
+        android:padding="12dp"
+        android:text="OpenGL ES 2D Shapes &amp; Colorizing: GLSL shaders, vertex buffers and GPU drawing"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#FFFFFF">
+
+        <com.example.test.OpenGLSurfaceView
+            android:id="@+id/openGLSurfaceView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="#FFFFFF"
+        android:elevation="8dp"
+        android:padding="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select 2D OpenGL Shape:"
+                android:textColor="#333333"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
+
+                <RadioGroup
+                    android:id="@+id/rgGLShape"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton android:id="@+id/rbGLTriangle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true" android:text="Triangle" android:textSize="11sp" />
+                    <RadioButton android:id="@+id/rbGLSquare" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Square" android:textSize="11sp" />
+                    <RadioButton android:id="@+id/rbGLPentagon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Pentagon" android:textSize="11sp" />
+                    <RadioButton android:id="@+id/rbGLHexagon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Hexagon" android:textSize="11sp" />
+                    <RadioButton android:id="@+id/rbGLOctagon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Octagon" android:textSize="11sp" />
+                    <RadioButton android:id="@+id/rbGLCircle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Circle (36-gon)" android:textSize="11sp" />
+                </RadioGroup>
+            </HorizontalScrollView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Solid color:"
+                android:textColor="#333333"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <Button android:id="@+id/btnGLBlue" android:layout_width="wrap_content" android:layout_height="36dp" android:layout_marginEnd="4dp" android:backgroundTint="#1E88E5" android:text="Blue" android:textSize="10sp" android:textColor="#FFFFFF" />
+                    <Button android:id="@+id/btnGLRed" android:layout_width="wrap_content" android:layout_height="36dp" android:layout_marginEnd="4dp" android:backgroundTint="#E53935" android:text="Red" android:textSize="10sp" android:textColor="#FFFFFF" />
+                    <Button android:id="@+id/btnGLGreen" android:layout_width="wrap_content" android:layout_height="36dp" android:layout_marginEnd="4dp" android:backgroundTint="#4CAF50" android:text="Green" android:textSize="10sp" android:textColor="#FFFFFF" />
+                    <Button android:id="@+id/btnGLYellow" android:layout_width="wrap_content" android:layout_height="36dp" android:layout_marginEnd="4dp" android:backgroundTint="#FBC02D" android:text="Yellow" android:textSize="10sp" android:textColor="#333333" />
+                    <Button android:id="@+id/btnGLCyan" android:layout_width="wrap_content" android:layout_height="36dp" android:layout_marginEnd="4dp" android:backgroundTint="#00ACC1" android:text="Cyan" android:textSize="10sp" android:textColor="#FFFFFF" />
+                    <Button android:id="@+id/btnGLMagenta" android:layout_width="wrap_content" android:layout_height="36dp" android:backgroundTint="#D81B60" android:text="Magenta" android:textSize="10sp" android:textColor="#FFFFFF" />
+                    <Button android:id="@+id/btnGLRainbow" android:layout_width="wrap_content" android:layout_height="36dp" android:backgroundTint="#8E24AA" android:text="Rainbow Gradient" android:textSize="10sp" android:textColor="#FFFFFF" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnGLAutoRotate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="4dp"
+                    android:backgroundTint="#26A69A"
+                    android:text="Auto Rotate: OFF"
+                    android:textSize="11sp"
+                    android:textColor="#FFFFFF" />
+
+                <Button
+                    android:id="@+id/btnGLReset"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#757575"
+                    android:text="Reset Position"
+                    android:textSize="11sp"
+                    android:textColor="#FFFFFF" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvGLScaleLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="OpenGL Scale: 1.00x"
+                android:textColor="#333333"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <SeekBar
+                android:id="@+id/sbGLScale"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="280"
+                android:progress="80" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
